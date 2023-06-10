@@ -14,6 +14,7 @@ class Controller(mainActivity: MainActivity) {
     private lateinit var diceArray: Array<Dice>
     private var currentDice: Int = 0;
     private lateinit var mainActivity: MainActivity;
+    private val values = IntArray(6);
 
     /**
      * Constructor for the class.
@@ -38,15 +39,20 @@ class Controller(mainActivity: MainActivity) {
         //Throw 2 dice at once.
         for (i in 1..2) {
             val value = diceArray[currentDice].roll()
+            //Store the rolled value in the values array.
+            values[currentDice] = value;
             drawImage(value, currentDice)
             currentDice++
+        }
+        for (element in values) {
+            println(element)
         }
     }
 
     /**
      * Draws an image in the View depending on the value and dice rolled.
      */
-    private fun drawImage(value: Int, currentDice: Int){
+    private fun drawImage(value: Int, diceNumber: Int){
         //Set the image that will be loaded in the View based on the value of the dice.
         val drawable = when (value) {
             1 -> ContextCompat.getDrawable(mainActivity, R.drawable.white1)
@@ -58,7 +64,16 @@ class Controller(mainActivity: MainActivity) {
             else -> null
         }
         //Set the image to the current dice. (Increments by one after each roll).
-        mainActivity.getDiceImageArray()[currentDice].setImageDrawable(drawable)
+        mainActivity.getDiceImageArray()[diceNumber].setImageDrawable(drawable)
+    }
+
+    /**
+     * Rerolls an already thrown dice then stores the new value on its index in the array.
+     */
+    fun rerollDice(diceNumber: Int){
+        var value = diceArray[diceNumber].roll();
+        values[diceNumber] = value;
+        drawImage(value, diceNumber)
     }
 
     /**

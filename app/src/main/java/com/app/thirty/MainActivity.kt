@@ -14,6 +14,9 @@ class MainActivity : AppCompatActivity() {
     private val scoreOptions = arrayOf(
         "Pick Score", "Low", "4", "5", "6", "7", "8", "9", "10", "11", "12", "---"
     )
+    private val rerollDiceOptions = arrayOf(
+        "1", "2", "3", "4", "5", "6"
+    )
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,11 +32,17 @@ class MainActivity : AppCompatActivity() {
             findViewById<ImageView>(resourceId)
         }
 
-        // Fill the spinner with the options array.
+        // Fill the spinner with the scoreOptions array.
         val spinner = findViewById<Spinner>(R.id.scoreSpinner)
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, scoreOptions)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
+
+        // Fill the spinner with the rerollDiceOptions array.
+        val rerollSpinner = findViewById<Spinner>(R.id.rerollSpinner)
+        val rerollAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, rerollDiceOptions)
+        rerollAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        rerollSpinner.adapter = rerollAdapter
     }
 
     /**
@@ -49,6 +58,15 @@ class MainActivity : AppCompatActivity() {
      */
     fun throwDice(view: View) {
         controller.throwDice(view)
+    }
+
+    /**
+     * Rerolls an already thrown dice.
+     */
+    fun rerollDice(view: View){
+        val spinner = findViewById<Spinner>(R.id.rerollSpinner)
+        val selectedItem = spinner.selectedItem.toString().toInt()-1; //-1 to account for starting at index 0.
+        controller.rerollDice(selectedItem)
     }
 
     /**
