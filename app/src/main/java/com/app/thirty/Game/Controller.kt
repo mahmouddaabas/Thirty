@@ -14,7 +14,8 @@ class Controller(mainActivity: MainActivity) {
     private lateinit var diceArray: Array<Dice>
     private var currentDice: Int = 0;
     private lateinit var mainActivity: MainActivity;
-    private val values = IntArray(6);
+    private var values = IntArray(6);
+    private var rerollAmount: Int = 0
 
     /**
      * Constructor for the class.
@@ -71,9 +72,30 @@ class Controller(mainActivity: MainActivity) {
      * Rerolls an already thrown dice then stores the new value on its index in the array.
      */
     fun rerollDice(diceNumber: Int){
-        var value = diceArray[diceNumber].roll();
-        values[diceNumber] = value;
-        drawImage(value, diceNumber)
+        if(rerollAmount < 2){
+            var value = diceArray[diceNumber].roll();
+            values[diceNumber] = value;
+            drawImage(value, diceNumber)
+            rerollAmount++;
+        }
+        else {
+            println("Already rerolled two times.")
+            //resetGame() //Reset game when user presses "Next round"
+        }
+    }
+
+    /**
+     * Resets games values after finishing a round.
+     */
+    fun resetGame(){
+        values = IntArray(6);
+        rerollAmount = 0;
+        currentDice = 0;
+        diceArray = Array(6) { Dice() }
+        val diceImageArray = mainActivity.getDiceImageArray()
+        for (i in diceImageArray.indices) {
+            diceImageArray[i].setImageDrawable(null)
+        }
     }
 
     /**
