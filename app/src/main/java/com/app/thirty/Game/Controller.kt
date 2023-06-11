@@ -82,14 +82,20 @@ class Controller(mainActivity: MainActivity) {
      * Rerolls an already thrown dice then stores the new value on its index in the array.
      */
     fun rerollDice(diceNumber: Int){
-        if(rerollAmount < 2){
-            var value = diceArray[diceNumber].roll();
-            values[diceNumber] = value;
-            drawImage(value, diceNumber)
-            rerollAmount++;
+        if(values[5] != 0){
+            if(rerollAmount < 2){
+                var value = diceArray[diceNumber].roll();
+                values[diceNumber] = value;
+                drawImage(value, diceNumber)
+                rerollAmount++;
+            }
+            else {
+                mainActivity.showAlertDialog(mainActivity, "Alert","You have already rerolled your dice two times this round!");
+            }
         }
         else {
-            mainActivity.showAlertDialog(mainActivity, "Alert","You have already rerolled your dice two times this round!");
+            mainActivity.showAlertDialog(mainActivity, "Alert","You have to throw all your dice before you can reroll!");
+
         }
     }
 
