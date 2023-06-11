@@ -1,5 +1,6 @@
 package com.app.thirty.Game
 
+import Score
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.app.thirty.MainActivity
@@ -17,18 +18,20 @@ class Controller(mainActivity: MainActivity) {
     private var values = IntArray(6);
     private var rerollAmount: Int = 0
     private var currentRound: Int = 1
+    private var score: Score = Score()
 
     /**
      * Constructor for the class.
      */
     init {
+        //Create dice for the game.
         createGameDice();
         //Set the local mainActivity object to the one sent in the class param.
         this.mainActivity = mainActivity;
     }
 
     /**
-     * Creates 6 dice and stores them in a dice array.
+     * Creates 6 dice objects and stores them in an array.
      */
     private fun createGameDice(){
         diceArray = Array(6) { Dice() }
@@ -114,13 +117,20 @@ class Controller(mainActivity: MainActivity) {
     }
 
     /**
-     *
+     * Calculates the score for the thrown dice then proceeds to next round.
      */
-    fun calculateScore(score: Any){
-        if(score != "Pick Score") {
+    fun calculateScore(scoreType: Any){
+        if(scoreType != "Pick Score") {
             //Create another class to calculate the score. Call method here.
             //All the dice values are stored in the values array.
-            println(score)
+            values[0] = 1
+            values[1] = 1
+            values[2] = 1
+            values[3] = 2
+            values[4] = 4
+            values[5] = 4
+            val sumScore = score.calculateCombinations(values, scoreType as String)
+            println(sumScore)
             nextRound()
         }
     }

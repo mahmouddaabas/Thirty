@@ -2,6 +2,10 @@ package com.app.thirty.Game
 
 import kotlin.random.Random
 
+/**
+ * Represents a dice.
+ * @author Mahmoud Daabas
+ */
 class Dice {
 
     private var value: Int = 0
