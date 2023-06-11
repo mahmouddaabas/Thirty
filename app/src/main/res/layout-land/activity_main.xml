@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/calculateBtn"
+        android:layout_width="110dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="12dp"
+        android:onClick="getSelectedScore"
+        android:text="Calculate"
+        app:layout_constraintBottom_toTopOf="@+id/rerollBtn"
+        app:layout_constraintEnd_toStartOf="@+id/scoreSpinner"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/throwBtn"
+        app:layout_constraintVertical_bias="0.733" />
+
+    <Button
+        android:id="@+id/rerollBtn"
+        android:layout_width="110dp"
+        android:layout_height="49dp"
+        android:layout_marginBottom="24dp"
+        android:onClick="rerollDice"
+        android:text="Reroll"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/rerollSpinner"
+        app:layout_constraintHorizontal_bias="0.104"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/throwBtn"
+        android:layout_width="110dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="144dp"
+        android:onClick="throwDice"
+        android:text="Throw"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/diceImage4"
+        android:layout_width="94dp"
+        android:layout_height="85dp"
+        app:layout_constraintEnd_toStartOf="@+id/diceImage5"
+        app:layout_constraintTop_toTopOf="@+id/diceImage3"
+        app:srcCompat="@android:drawable/screen_background_light_transparent" />
+
+    <ImageView
+        android:id="@+id/diceImage1"
+        android:layout_width="94dp"
+        android:layout_height="85dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="80dp"
+        app:layout_constraintEnd_toStartOf="@+id/diceImage2"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/screen_background_light_transparent" />
+
+    <ImageView
+        android:id="@+id/diceImage5"
+        android:layout_width="94dp"
+        android:layout_height="85dp"
+        app:layout_constraintEnd_toStartOf="@+id/diceImage6"
+        app:layout_constraintTop_toTopOf="@+id/diceImage4"
+        app:srcCompat="@android:drawable/screen_background_light_transparent" />
+
+    <ImageView
+        android:id="@+id/diceImage6"
+        android:layout_width="94dp"
+        android:layout_height="85dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/diceImage5"
+        app:srcCompat="@android:drawable/screen_background_light_transparent" />
+
+    <ImageView
+        android:id="@+id/diceImage2"
+        android:layout_width="94dp"
+        android:layout_height="85dp"
+        app:layout_constraintEnd_toStartOf="@+id/diceImage3"
+        app:layout_constraintTop_toTopOf="@+id/diceImage1"
+        app:srcCompat="@android:drawable/screen_background_light_transparent" />
+
+    <ImageView
+        android:id="@+id/diceImage3"
+        android:layout_width="94dp"
+        android:layout_height="85dp"
+        app:layout_constraintEnd_toStartOf="@+id/diceImage4"
+        app:layout_constraintTop_toTopOf="@+id/diceImage2"
+        app:srcCompat="@android:drawable/screen_background_light_transparent" />
+
+    <Spinner
+        android:id="@+id/scoreSpinner"
+        android:layout_width="205dp"
+        android:layout_height="65dp"
+        android:layout_marginEnd="368dp"
+        android:layout_marginBottom="96dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Spinner
+        android:id="@+id/rerollSpinner"
+        android:layout_width="205dp"
+        android:layout_height="65dp"
+        android:layout_marginEnd="368dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/scoreSpinner"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/roundText"
+        android:layout_width="151dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="16dp"
+        android:text="Round: 1"
+        android:textSize="32dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
