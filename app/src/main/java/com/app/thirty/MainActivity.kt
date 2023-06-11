@@ -1,6 +1,7 @@
 package com.app.thirty
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -85,6 +86,14 @@ class MainActivity : AppCompatActivity() {
      */
     fun getDiceImageArray(): Array<ImageView> {
         return diceImageArray
+    }
+
+    /**
+     * Switches the application to the ResultActivity when the game ends.
+     */
+    fun switchToResultActivity(){
+        val intent = Intent(this, ResultActivity::class.java)
+        startActivity(intent)
     }
 
     /**

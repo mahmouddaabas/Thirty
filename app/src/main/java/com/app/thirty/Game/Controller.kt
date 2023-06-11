@@ -113,7 +113,12 @@ class Controller(mainActivity: MainActivity) {
         if(values[5] != 0){
             resetGame();
             currentRound++;
-            mainActivity.setRoundText("Round: $currentRound")
+            if(currentRound == 2){
+                endGame()
+            }
+            else {
+                mainActivity.setRoundText("Round: $currentRound")
+            }
         }
         else {
             mainActivity.showAlertDialog(mainActivity, "Alert","You need to throw all your dice before you can proceed to the next round!");
@@ -128,11 +133,20 @@ class Controller(mainActivity: MainActivity) {
         if(scoreType != "Pick Score" && values[5] != 0) {
             val sumScore = score.calculateCombinations(values, scoreType as String)
             results.saveResult(sumScore, currentRound, scoreType)
-            results.printSavedResults()
             nextRound()
         }
         else {
             mainActivity.showAlertDialog(mainActivity, "Alert","Throw your dice and select a score type before calculating!");
         }
+    }
+
+    /**
+     * Ends the game once the rounds played hit 10.
+     */
+    fun endGame(){
+        println("End game function: ")
+        results.printSavedResults()
+        mainActivity.switchToResultActivity()
+        //Create elements for the activity and fill it with data saved in the Results class.
     }
 }
