@@ -63,7 +63,7 @@ class Controller(mainActivity: MainActivity) {
     /**
      * Draws an image in the View depending on the value and dice rolled.
      */
-    private fun drawImage(value: Int, diceNumber: Int){
+     fun drawImage(value: Int, diceNumber: Int){
         //Set the image that will be loaded in the View based on the value of the dice.
         val drawable = when (value) {
             1 -> ContextCompat.getDrawable(mainActivity, R.drawable.white1)
@@ -155,5 +155,19 @@ class Controller(mainActivity: MainActivity) {
     private fun endGame(){
         results.printSavedResults()
         mainActivity.switchToResultActivity(results.getResultsList(), results.getTotalScore())
+    }
+
+    /**
+     * Returns the dice values array.
+     */
+    fun getDiceValues():IntArray{
+        return values
+    }
+
+    /**
+     * Sets the dice values array.
+     */
+    fun setDiceValues(newValues: IntArray) {
+        values = newValues.copyOf()
     }
 }

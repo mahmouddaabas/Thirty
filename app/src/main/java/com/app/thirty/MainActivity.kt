@@ -131,4 +131,31 @@ class MainActivity : AppCompatActivity() {
             .create()
         alertDialog.show()
     }
+
+    /**
+     * Saves the state of the application.
+     */
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString("roundText", findViewById<TextView>(R.id.roundText).text.toString())
+        outState.putIntArray("diceValueArray", controller.getDiceValues())
+    }
+
+    /**
+     * Restores the state of the application.
+     */
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        val roundText = savedInstanceState.getString("roundText")
+        findViewById<TextView>(R.id.roundText).text = roundText
+
+        val diceValues = savedInstanceState.getIntArray("diceValueArray")
+        if (diceValues != null) {
+            for (i in diceValues.indices) {
+                controller.drawImage(diceValues[i], i)
+            }
+            //Pass the saved dice values back to the controller.
+            controller.setDiceValues(diceValues)
+        }
+    }
 }
