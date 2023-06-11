@@ -148,6 +148,6 @@ class Controller(mainActivity: MainActivity) {
      */
     fun endGame(){
         results.printSavedResults()
-        mainActivity.switchToResultActivity(results.getResultsList())
+        mainActivity.switchToResultActivity(results.getResultsList(), results.getTotalScore())
     }
 }

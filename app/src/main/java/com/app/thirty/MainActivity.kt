@@ -95,9 +95,10 @@ class MainActivity : AppCompatActivity() {
     /**
      * Switches the application to the ResultActivity when the game ends.
      */
-    fun switchToResultActivity(results: ArrayList<String>){
+    fun switchToResultActivity(results: ArrayList<String>, totalScore: Int){
         val intent = Intent(this, ResultActivity::class.java)
         intent.putExtra("resultsArray", results)
+        intent.putExtra("totalScore", totalScore)
         startActivity(intent)
     }
 

@@ -17,6 +17,9 @@ class ResultActivity : AppCompatActivity() {
         val intent = intent;
         val resultsArray = intent.getStringArrayListExtra("resultsArray")
         setResultsText(ArrayList<String>(resultsArray ?: emptyList()))
+
+        val totalScore = intent.getIntExtra("totalScore", 0)
+        setTotalScoreText(totalScore)
     }
 
     /**
@@ -27,5 +30,13 @@ class ResultActivity : AppCompatActivity() {
         for (result in results) {
             textView.append(result + "\n")
         }
+    }
+
+    /**
+     * Sets the total score to the text view.
+     */
+    fun setTotalScoreText(totalScore: Int){
+        val textView = findViewById<TextView>(R.id.totalScoreText)
+        textView.text = "Total Score: $totalScore"
     }
 }

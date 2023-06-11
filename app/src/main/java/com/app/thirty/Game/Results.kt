@@ -6,15 +6,18 @@ package com.app.thirty.Game
  */
 class Results {
     private val list: ArrayList<String> = ArrayList();
+    private var totalScore: Int = 0
 
     /**
      * Saves a result from a round to the list.
+     * Adds the recieved score to the total score variable.
      * @param score the acquired score.
      * @param currentRound the round where the result was achieved.
      * @param scoreType the score type the user used.
      */
     fun saveResult(score: Int, currentRound: Int, scoreType: String){
         list.add("Round: $currentRound - Score: $score - Score Type: $scoreType")
+        totalScore += score
     }
 
     /**
@@ -29,6 +32,13 @@ class Results {
      */
     fun getResultsList(): ArrayList<String> {
         return list
+    }
+
+    /**
+     * Returns the total score from all rounds.
+     */
+    fun getTotalScore(): Int {
+        return totalScore;
     }
 
 }
