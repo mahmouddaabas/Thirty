@@ -1,11 +1,14 @@
 package com.app.thirty
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.Spinner
+import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import com.app.thirty.Game.Controller
 
 class MainActivity : AppCompatActivity() {
@@ -70,9 +73,32 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
+     * Changes the text in the round textView.
+     */
+    fun setRoundText(text: String){
+        val textView = findViewById<TextView>(R.id.roundText)
+        textView.text = text;
+    }
+
+    /**
      * Returns the diceImageArray.
      */
     fun getDiceImageArray(): Array<ImageView> {
         return diceImageArray
+    }
+
+    /**
+     * This function shows alert boxes.
+     */
+    fun showAlertDialog(context: Context, title: String, message: String) {
+        val alertDialog = AlertDialog.Builder(context)
+            .setTitle(title)
+            .setMessage(message)
+            .setPositiveButton("OK") { dialog, _ ->
+                // Handle OK button click event here
+                dialog.dismiss()
+            }
+            .create()
+        alertDialog.show()
     }
 }

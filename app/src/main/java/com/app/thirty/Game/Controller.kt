@@ -16,6 +16,7 @@ class Controller(mainActivity: MainActivity) {
     private lateinit var mainActivity: MainActivity;
     private var values = IntArray(6);
     private var rerollAmount: Int = 0
+    private var currentRound: Int = 1
 
     /**
      * Constructor for the class.
@@ -79,8 +80,7 @@ class Controller(mainActivity: MainActivity) {
             rerollAmount++;
         }
         else {
-            println("Already rerolled two times.")
-            //resetGame() //Reset game when user presses "Next round"
+            mainActivity.showAlertDialog(mainActivity, "Alert","You have already rerolled your dice two times this round!");
         }
     }
 
@@ -99,12 +99,29 @@ class Controller(mainActivity: MainActivity) {
     }
 
     /**
-     * Calculates the score depending on what the user selected.
+     * Proceeds to the next round.
+     */
+    fun nextRound(){
+        //All values must be filled before user can go to next round.
+        if(values[5] != 0){
+            resetGame();
+            currentRound++;
+            mainActivity.setRoundText("Round: $currentRound")
+        }
+        else {
+            mainActivity.showAlertDialog(mainActivity, "Alert","You need to throw all your dice before you can proceed to the next round!");
+        }
+    }
+
+    /**
+     *
      */
     fun calculateScore(score: Any){
         if(score != "Pick Score") {
             //Create another class to calculate the score. Call method here.
+            //All the dice values are stored in the values array.
             println(score)
+            nextRound()
         }
     }
 }
