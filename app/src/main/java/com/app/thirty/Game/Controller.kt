@@ -19,6 +19,7 @@ class Controller(mainActivity: MainActivity) {
     private var rerollAmount: Int = 0
     private var currentRound: Int = 1
     private var score: Score = Score()
+    private var results: Results = Results()
 
     /**
      * Constructor for the class.
@@ -41,16 +42,19 @@ class Controller(mainActivity: MainActivity) {
      * Rolls a dice in the array then increments the currentDice counter.
      */
     fun throwDice(view: View){
-        //Throw 2 dice at once.
-        for (i in 1..2) {
-            val value = diceArray[currentDice].roll()
-            //Store the rolled value in the values array.
-            values[currentDice] = value;
-            drawImage(value, currentDice)
-            currentDice++
+        //Cant throw more than 6 dice
+        if(values[5] == 0){
+            //Throw 2 dice at once.
+            for (i in 1..2) {
+                val value = diceArray[currentDice].roll()
+                //Store the rolled value in the values array.
+                values[currentDice] = value;
+                drawImage(value, currentDice)
+                currentDice++
+            }
         }
-        for (element in values) {
-            println(element)
+        else {
+            mainActivity.showAlertDialog(mainActivity, "Alert","You can't throw more dice this round!");
         }
     }
 
@@ -120,18 +124,15 @@ class Controller(mainActivity: MainActivity) {
      * Calculates the score for the thrown dice then proceeds to next round.
      */
     fun calculateScore(scoreType: Any){
-        if(scoreType != "Pick Score") {
-            //Create another class to calculate the score. Call method here.
-            //All the dice values are stored in the values array.
-            values[0] = 1
-            values[1] = 1
-            values[2] = 1
-            values[3] = 2
-            values[4] = 4
-            values[5] = 4
+        //Check if user selected a score type and threw their dice.
+        if(scoreType != "Pick Score" && values[5] != 0) {
             val sumScore = score.calculateCombinations(values, scoreType as String)
-            println(sumScore)
+            results.saveResult(sumScore, currentRound, scoreType)
+            results.printSavedResults()
             nextRound()
+        }
+        else {
+            mainActivity.showAlertDialog(mainActivity, "Alert","Throw your dice and select a score type before calculating!");
         }
     }
 }
