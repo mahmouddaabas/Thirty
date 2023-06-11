@@ -21,7 +21,6 @@ class Controller(mainActivity: MainActivity) {
     private var currentRound: Int = 1
     private var score: Score = Score()
     private var results: Results = Results()
-    val resultActivity = ResultActivity()
 
 
     /**
@@ -97,7 +96,7 @@ class Controller(mainActivity: MainActivity) {
     /**
      * Resets games values after finishing a round.
      */
-    fun resetGame(){
+    private fun resetGame(){
         values = IntArray(6);
         rerollAmount = 0;
         currentDice = 0;
@@ -111,12 +110,12 @@ class Controller(mainActivity: MainActivity) {
     /**
      * Proceeds to the next round.
      */
-    fun nextRound(){
+    private fun nextRound(){
         //All values must be filled before user can go to next round.
         if(values[5] != 0){
             resetGame();
             currentRound++;
-            if(currentRound == 3){
+            if(currentRound == 11){
                 endGame()
             }
             else {
@@ -136,6 +135,7 @@ class Controller(mainActivity: MainActivity) {
         if(scoreType != "Pick Score" && values[5] != 0) {
             val sumScore = score.calculateCombinations(values, scoreType as String)
             results.saveResult(sumScore, currentRound, scoreType)
+            mainActivity.removeValueFromScoreOptions(scoreType)
             nextRound()
         }
         else {
@@ -146,7 +146,7 @@ class Controller(mainActivity: MainActivity) {
     /**
      * Ends the game once the rounds played hit 10.
      */
-    fun endGame(){
+    private fun endGame(){
         results.printSavedResults()
         mainActivity.switchToResultActivity(results.getResultsList(), results.getTotalScore())
     }

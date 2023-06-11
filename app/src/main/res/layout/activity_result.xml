@@ -8,16 +8,16 @@
 
     <TextView
         android:id="@+id/totalScoreText"
-        android:layout_width="371dp"
-        android:layout_height="76dp"
+        android:layout_width="387dp"
+        android:layout_height="82dp"
+        android:text="Total Score: 500"
         android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.992" />
+        app:layout_constraintVertical_bias="0.994" />
 
     <TextView
         android:id="@+id/yourResultsText"
@@ -28,9 +28,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.433"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.203" />
+        app:layout_constraintVertical_bias="0.141" />
 
     <TextView
         android:id="@+id/endGameText"
@@ -41,25 +42,27 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.429"
+        app:layout_constraintHorizontal_bias="0.351"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.061" />
+        app:layout_constraintVertical_bias="0.024" />
 
     <TextView
         android:id="@+id/resultsText"
-        android:layout_width="374dp"
-        android:layout_height="344dp"
+        android:layout_width="362dp"
+        android:layout_height="466dp"
         android:layout_marginStart="73dp"
-        android:layout_marginTop="282dp"
+        android:layout_marginTop="224dp"
         android:layout_marginEnd="70dp"
-        android:layout_marginBottom="94dp"
+        android:layout_marginBottom="128dp"
         android:text=""
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.574" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -25,17 +25,17 @@ class ResultActivity : AppCompatActivity() {
     /**
      * Adds the results to the text view.
      */
-    fun setResultsText(results: ArrayList<String>) {
+    private fun setResultsText(results: ArrayList<String>) {
         val textView = findViewById<TextView>(R.id.resultsText)
         for (result in results) {
-            textView.append(result + "\n")
+            textView.append(result + "\n\n")
         }
     }
 
     /**
      * Sets the total score to the text view.
      */
-    fun setTotalScoreText(totalScore: Int){
+    private fun setTotalScoreText(totalScore: Int){
         val textView = findViewById<TextView>(R.id.totalScoreText)
         textView.text = "Total Score: $totalScore"
     }

@@ -19,8 +19,8 @@ import com.app.thirty.Game.Controller
 class MainActivity : AppCompatActivity() {
     private lateinit var controller: Controller
     private lateinit var diceImageArray: Array<ImageView>
-    private val scoreOptions = arrayOf(
-        "Pick Score", "Low", "4", "5", "6", "7", "8", "9", "10", "11", "12", "---"
+    private var scoreOptions = arrayOf(
+        "Pick Score", "Low", "4", "5", "6", "7", "8", "9", "10", "11", "12",
     )
     private val rerollDiceOptions = arrayOf(
         "1", "2", "3", "4", "5", "6"
@@ -39,7 +39,10 @@ class MainActivity : AppCompatActivity() {
             val resourceId = resources.getIdentifier("diceImage${index + 1}", "id", packageName)
             findViewById<ImageView>(resourceId)
         }
+        fillSpinners()
+    }
 
+    private fun fillSpinners(){
         // Fill the spinner with the scoreOptions array.
         val spinner = findViewById<Spinner>(R.id.scoreSpinner)
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, scoreOptions)
@@ -100,6 +103,18 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra("resultsArray", results)
         intent.putExtra("totalScore", totalScore)
         startActivity(intent)
+    }
+
+    /**
+     * Removes a value from the score options.
+     * This prevents the user from using the same score type twice.
+     */
+    fun removeValueFromScoreOptions(valueToRemove: String){
+        val scoreOptionsList = scoreOptions.toMutableList()
+        scoreOptionsList.remove(valueToRemove)
+        val updatedScoreOptions = scoreOptionsList.toTypedArray()
+        scoreOptions = updatedScoreOptions
+        fillSpinners()
     }
 
     /**
