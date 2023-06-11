@@ -12,6 +12,10 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import com.app.thirty.Game.Controller
 
+/**
+ * This is the main view of the program.
+ * The game is played on this view.
+ */
 class MainActivity : AppCompatActivity() {
     private lateinit var controller: Controller
     private lateinit var diceImageArray: Array<ImageView>
@@ -91,8 +95,9 @@ class MainActivity : AppCompatActivity() {
     /**
      * Switches the application to the ResultActivity when the game ends.
      */
-    fun switchToResultActivity(){
+    fun switchToResultActivity(results: ArrayList<String>){
         val intent = Intent(this, ResultActivity::class.java)
+        intent.putExtra("resultsArray", results)
         startActivity(intent)
     }
 

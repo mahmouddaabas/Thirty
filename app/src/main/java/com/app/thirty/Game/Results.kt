@@ -14,7 +14,7 @@ class Results {
      * @param scoreType the score type the user used.
      */
     fun saveResult(score: Int, currentRound: Int, scoreType: String){
-        list.add("Round: $currentRound\n Score: $score\nScore Type Used: $scoreType")
+        list.add("Round: $currentRound - Score: $score - Score Type: $scoreType")
     }
 
     /**
@@ -23,4 +23,12 @@ class Results {
     fun printSavedResults(){
         println(list);
     }
+
+    /**
+     * Returns the list with the saved results.
+     */
+    fun getResultsList(): ArrayList<String> {
+        return list
+    }
+
 }

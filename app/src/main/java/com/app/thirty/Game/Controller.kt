@@ -5,6 +5,7 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import com.app.thirty.MainActivity
 import com.app.thirty.R
+import com.app.thirty.ResultActivity
 
 /**
  * This class handles the game logic.
@@ -20,6 +21,8 @@ class Controller(mainActivity: MainActivity) {
     private var currentRound: Int = 1
     private var score: Score = Score()
     private var results: Results = Results()
+    val resultActivity = ResultActivity()
+
 
     /**
      * Constructor for the class.
@@ -113,7 +116,7 @@ class Controller(mainActivity: MainActivity) {
         if(values[5] != 0){
             resetGame();
             currentRound++;
-            if(currentRound == 2){
+            if(currentRound == 3){
                 endGame()
             }
             else {
@@ -144,9 +147,7 @@ class Controller(mainActivity: MainActivity) {
      * Ends the game once the rounds played hit 10.
      */
     fun endGame(){
-        println("End game function: ")
         results.printSavedResults()
-        mainActivity.switchToResultActivity()
-        //Create elements for the activity and fill it with data saved in the Results class.
+        mainActivity.switchToResultActivity(results.getResultsList())
     }
 }
