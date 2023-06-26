@@ -46,8 +46,8 @@ class Controller(mainActivity: MainActivity) {
     fun throwDice(view: View){
         //Cant throw more than 6 dice
         if(values[5] == 0){
-            //Throw 2 dice at once.
-            for (i in 1..2) {
+            //Throw 6 dice at once.
+            for (i in 1..6) {
                 val value = diceArray[currentDice].roll()
                 //Store the rolled value in the values array.
                 values[currentDice] = value;
