@@ -1,11 +1,10 @@
-package com.app.thirty.Game
+package se.umu.mada0474.thirty.Game
 
 import Score
 import android.view.View
 import androidx.core.content.ContextCompat
-import com.app.thirty.MainActivity
-import com.app.thirty.R
-import com.app.thirty.ResultActivity
+import se.umu.mada0474.thirty.MainActivity
+import se.umu.mada0474.thirty.R
 
 /**
  * This class handles the game logic.

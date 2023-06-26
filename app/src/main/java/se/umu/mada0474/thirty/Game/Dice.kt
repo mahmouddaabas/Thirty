@@ -1,4 +1,4 @@
-package com.app.thirty.Game
+package se.umu.mada0474.thirty.Game
 
 import kotlin.random.Random
 

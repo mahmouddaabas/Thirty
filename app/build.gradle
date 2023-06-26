@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.app.thirty'
+    namespace 'se.umu.mada0474.thirty'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.app.thirty"
+        applicationId "se.umu.mada0474.thirty"
         minSdk 24
         targetSdk 33
         versionCode 1

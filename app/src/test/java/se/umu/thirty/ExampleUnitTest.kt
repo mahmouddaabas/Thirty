@@ -1,4 +1,4 @@
-package com.app.thirty
+package se.umu.thirty
 
 import org.junit.Test
 

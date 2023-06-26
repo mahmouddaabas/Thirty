@@ -1,4 +1,4 @@
-package com.app.thirty
+package se.umu.mada0474.thirty
 
 import android.content.Context
 import android.content.Intent
@@ -10,7 +10,7 @@ import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
-import com.app.thirty.Game.Controller
+import se.umu.mada0474.thirty.Game.Controller
 
 /**
  * This is the main view of the program.

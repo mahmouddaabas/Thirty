@@ -1,4 +1,4 @@
-package com.app.thirty
+package se.umu.mada0474.thirty
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
