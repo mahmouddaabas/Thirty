@@ -169,4 +169,18 @@ class Controller(mainActivity: MainActivity) {
     fun setDiceValues(newValues: IntArray) {
         values = newValues.copyOf()
     }
+
+    /**
+     * Returns the reroll amount.
+     */
+    fun getRerollAmount(): Int{
+        return this.rerollAmount
+    }
+
+    /**
+     * Sets the reroll amount.
+     */
+    fun setRerollAmount(amount: Int){
+        this.rerollAmount = amount
+    }
 }
