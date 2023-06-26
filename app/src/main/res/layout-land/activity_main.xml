@@ -6,6 +6,73 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/dice1Text6"
+        android:layout_width="86dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="4dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Dice: 1"
+        app:layout_constraintEnd_toStartOf="@+id/dice1Text4"
+        app:layout_constraintTop_toTopOf="@+id/dice1Text4" />
+
+    <TextView
+        android:id="@+id/dice1Text5"
+        android:layout_width="92dp"
+        android:layout_height="51dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Dice: 3"
+        app:layout_constraintEnd_toStartOf="@+id/dice1Text7"
+        app:layout_constraintTop_toTopOf="@+id/dice1Text7" />
+
+    <TextView
+        android:id="@+id/dice1Text7"
+        android:layout_width="92dp"
+        android:layout_height="51dp"
+        android:layout_marginEnd="4dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Dice: 4"
+        app:layout_constraintEnd_toStartOf="@+id/dice1Text8"
+        app:layout_constraintTop_toTopOf="@+id/dice1Text8" />
+
+    <TextView
+        android:id="@+id/dice1Text8"
+        android:layout_width="92dp"
+        android:layout_height="51dp"
+        android:layout_marginEnd="4dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Dice: 5"
+        app:layout_constraintEnd_toStartOf="@+id/dice1Text9"
+        app:layout_constraintTop_toTopOf="@+id/dice1Text9" />
+
+    <TextView
+        android:id="@+id/dice1Text4"
+        android:layout_width="92dp"
+        android:layout_height="51dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Dice: 2"
+        app:layout_constraintEnd_toStartOf="@+id/dice1Text5"
+        app:layout_constraintTop_toTopOf="@+id/dice1Text5" />
+
+    <TextView
+        android:id="@+id/dice1Text9"
+        android:layout_width="92dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="4dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Dice: 6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/calculateBtn"
         android:layout_width="110dp"
