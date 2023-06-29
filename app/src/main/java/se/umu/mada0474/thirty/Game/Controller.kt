@@ -138,7 +138,7 @@ class Controller(mainActivity: MainActivity) {
     fun calculateScore(scoreType: Any){
         //Check if user selected a score type and threw their dice.
         if(scoreType != "Pick Score" && values[5] != 0) {
-            val sumScore = score.calculateCombinations(values, scoreType as String)
+            val sumScore = score.calculateScore(scoreType as String, values)
             results.saveResult(sumScore, currentRound, scoreType)
             mainActivity.removeValueFromScoreOptions(scoreType)
             nextRound()
