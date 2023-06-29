@@ -119,6 +119,7 @@ class Controller(mainActivity: MainActivity) {
         // All values must be filled before the user can go to the next round.
         if (values[5] != 0) {
             resetGame()
+            rerolledDice = IntArray(6);
             currentRound++
             if (currentRound == 11) {
                 endGame()
