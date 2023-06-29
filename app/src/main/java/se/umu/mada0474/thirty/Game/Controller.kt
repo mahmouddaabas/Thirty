@@ -16,10 +16,10 @@ class Controller(mainActivity: MainActivity) {
     private var currentDice: Int = 0;
     private lateinit var mainActivity: MainActivity;
     private var values = IntArray(6);
-    private var rerollAmount: Int = 0
     private var currentRound: Int = 1
     private var score: Score = Score()
     private var results: Results = Results()
+    private var rerolledDice = IntArray(6);
 
 
     /**
@@ -80,31 +80,30 @@ class Controller(mainActivity: MainActivity) {
     /**
      * Rerolls an already thrown dice then stores the new value on its index in the array.
      */
-    fun rerollDice(diceNumber: Int){
-        if(values[5] != 0){
-            if(rerollAmount < 2){
-                var value = diceArray[diceNumber].roll();
-                values[diceNumber] = value;
+    fun rerollDice(diceNumber: Int) {
+        if (values[diceNumber] != 0) {
+            if (rerolledDice[diceNumber] < 2) {
+                val value = diceArray[diceNumber].roll()
+                values[diceNumber] = value
+                rerolledDice[diceNumber]++ //save the amount of times the specific dice has been rerolled.
+                println(rerolledDice.toList())
                 drawImage(value, diceNumber)
-                rerollAmount++;
+            } else {
+                mainActivity.showAlertDialog(mainActivity, "Alert", "You have already rerolled this dice two times this round!")
             }
-            else {
-                mainActivity.showAlertDialog(mainActivity, "Alert","You have already rerolled your dice two times this round!");
-            }
-        }
-        else {
-            mainActivity.showAlertDialog(mainActivity, "Alert","You have to throw all your dice before you can reroll!");
-
+        } else {
+            mainActivity.showAlertDialog(mainActivity, "Alert", "You have to throw all your dice before you can reroll!")
         }
     }
+
+
 
     /**
      * Resets games values after finishing a round.
      */
-    private fun resetGame(){
-        values = IntArray(6);
-        rerollAmount = 0;
-        currentDice = 0;
+    private fun resetGame() {
+        values = IntArray(6)
+        currentDice = 0
         diceArray = Array(6) { Dice() }
         val diceImageArray = mainActivity.getDiceImageArray()
         for (i in diceImageArray.indices) {
@@ -112,25 +111,25 @@ class Controller(mainActivity: MainActivity) {
         }
     }
 
+
     /**
      * Proceeds to the next round.
      */
-    private fun nextRound(){
-        //All values must be filled before user can go to next round.
-        if(values[5] != 0){
-            resetGame();
-            currentRound++;
-            if(currentRound == 11){
+    private fun nextRound() {
+        // All values must be filled before the user can go to the next round.
+        if (values[5] != 0) {
+            resetGame()
+            currentRound++
+            if (currentRound == 11) {
                 endGame()
-            }
-            else {
+            } else {
                 mainActivity.setRoundText("Round: $currentRound")
             }
-        }
-        else {
-            mainActivity.showAlertDialog(mainActivity, "Alert","You need to throw all your dice before you can proceed to the next round!");
+        } else {
+            mainActivity.showAlertDialog(mainActivity, "Alert", "You need to throw all your dice before you can proceed to the next round!")
         }
     }
+
 
     /**
      * Calculates the score for the thrown dice then proceeds to next round.
@@ -171,16 +170,17 @@ class Controller(mainActivity: MainActivity) {
     }
 
     /**
-     * Returns the reroll amount.
+     * Returns the array of the rerolled dice.
      */
-    fun getRerollAmount(): Int{
-        return this.rerollAmount
+    fun getRerolledDice():IntArray{
+        return rerolledDice
     }
 
     /**
-     * Sets the reroll amount.
+     * Sets the array of the rerolled dice.
      */
-    fun setRerollAmount(amount: Int){
-        this.rerollAmount = amount
+    fun setRerolledDice(rerolledDice: IntArray) {
+        this.rerolledDice = rerolledDice.copyOf()
+        println(this.rerolledDice.toList())
     }
 }

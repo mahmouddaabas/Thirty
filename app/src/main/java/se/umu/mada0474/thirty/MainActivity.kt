@@ -139,7 +139,7 @@ class MainActivity : AppCompatActivity() {
         super.onSaveInstanceState(outState)
         outState.putString("roundText", findViewById<TextView>(R.id.roundText).text.toString())
         outState.putIntArray("diceValueArray", controller.getDiceValues())
-        outState.putInt("rerollAmount", controller.getRerollAmount())
+        outState.putIntArray("rerolledDiceArray", controller.getRerolledDice())
     }
 
     /**
@@ -149,8 +149,11 @@ class MainActivity : AppCompatActivity() {
         super.onRestoreInstanceState(savedInstanceState)
         val roundText = savedInstanceState.getString("roundText")
         findViewById<TextView>(R.id.roundText).text = roundText
-        val rerollAmount = savedInstanceState.getInt("rerollAmount")
-        controller.setRerollAmount(rerollAmount)
+
+        val rerolledDice = savedInstanceState.getIntArray("rerolledDiceArray")
+        if (rerolledDice != null) {
+            controller.setRerolledDice(rerolledDice)
+        }
 
         val diceValues = savedInstanceState.getIntArray("diceValueArray")
         if (diceValues != null) {
