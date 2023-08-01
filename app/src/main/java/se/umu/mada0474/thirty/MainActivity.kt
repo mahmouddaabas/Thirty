@@ -140,6 +140,8 @@ class MainActivity : AppCompatActivity() {
         outState.putString("roundText", findViewById<TextView>(R.id.roundText).text.toString())
         outState.putIntArray("diceValueArray", controller.getDiceValues())
         outState.putIntArray("rerolledDiceArray", controller.getRerolledDice())
+        outState.putStringArray("scoreOptions", scoreOptions)
+        outState.putInt("currentRound", controller.getCurrentRound())
     }
 
     /**
@@ -163,5 +165,14 @@ class MainActivity : AppCompatActivity() {
             //Pass the saved dice values back to the controller.
             controller.setDiceValues(diceValues)
         }
+
+        val scoreOptions = savedInstanceState.getStringArray("scoreOptions");
+        if (scoreOptions != null) {
+            this.scoreOptions = scoreOptions
+            fillSpinners()
+        }
+
+        val currentRound = savedInstanceState.getInt("currentRound");
+        controller.setCurrentRound(currentRound);
     }
 }

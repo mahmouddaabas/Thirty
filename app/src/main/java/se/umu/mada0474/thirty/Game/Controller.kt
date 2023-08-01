@@ -184,4 +184,19 @@ class Controller(mainActivity: MainActivity) {
         this.rerolledDice = rerolledDice.copyOf()
         println(this.rerolledDice.toList())
     }
+
+    /**
+     * Gets the variable storing the current round.
+     */
+    fun getCurrentRound(): Int{
+        return this.currentRound;
+    }
+
+    /**
+     * Sets the current round variable.
+     */
+    fun setCurrentRound(currentRound: Int) {
+        this.currentRound = currentRound
+    }
+
 }
